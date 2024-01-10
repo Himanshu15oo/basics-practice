@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="admin-styles.css" />
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <nav class="header" id="myHeader">
+      <div id="main-header">
+        <h1>Uber Blog</h1>
+      </div>
+    </nav>
+
+    <!-- ADMIN PANE START-->
+    <div id="adminPane" class="page visible">
+      <div class="banner admin-banner">
+        <h1 id="adminTitle">Admin Panel</h1>
+        <button class="button addButton" onclick="addCard()">Add Blog</button>
+      </div>
+
+      <div class="grid-container"></div>
+    </div>
+    <!-- ADMIN PANE END  -->
+
+    <!-- CARD PANE START  -->
+    <div id="cardPane" class="page">
+      <div class="banner card-banner">
+        <div id="addBlog">
+          <button class="button goToAdmin" onclick="goToAdmin()">
+            Go Back
+          </button>
+          <button class="button addButton" onclick="saveBlog()">
+            Save changes
+          </button>
+        </div>
+      </div>
+
+      <div class="blog">
+        <label for="title" id="title-label">
+          <h1>Add Blog</h1>
+        </label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter Blog title here!"
+        />
+        <textarea
+          name="content"
+          id="content"
+          cols="30"
+          rows="10"
+          placeholder="Enter Blog content here!"
+        ></textarea>
+      </div>
+    </div>
+    <!-- CARD PANE END  -->
+
+    <script src="admin.js"></script>
+  </body>
+</html>
