@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav class="header" id="myHeader">
+      <div id="main-header">
+        <h1>Uber Blog</h1>
+      </div>
+      <div id="side-header">
+        <h3>Explore</h3>
+      </div>
+
+      <ul class="header-list">
+        <li class="header-list-items">En</li>
+        <li class="header-list-items">Search</li>
+        <li class="header-list-items"></li>
+      </ul>
+      <button id="sign-up">Sign up</button>
+      <!-- <button
+        id="header-button"
+        href="javascript:void(0);"
+        class="icon"
+        onclick="showHeader()"
+      >
+        <i class="white-arrow down"></i>
+      </button> -->
+    </nav>
+
+    <!-- <nav class="navbar">
+      <div class="navbar-items" id="navbar-title">
+        <h1>Engineering</h1>
+      </div>
+      <div class="navbar-items">
+        <ul id="navbar-links">
+          <li class="navbar-link">
+            <a href="" class="nav-links">Overview</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">AI</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Backend</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Culture</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Data / ML</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Mobile</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Web</a>
+          </li>
+          <li class="navbar-link">
+            <a href="" class="nav-links">Research</a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <div class="topnav" id="myTopnav">
+      <h1 class="nav-title" id="nav-title">Engineering</h1>
+      <button
+        id="nav-button"
+        href="javascript:void(0);"
+        class="icon"
+        onclick="showNavbar()"
+      >
+        <i class="arrow down"></i>
+      </button>
+      <a href="" class="nav-links">Research</a>
+      <a href="" class="nav-links">Web</a>
+      <a href="" class="nav-links">Mobile</a>
+      <a href="" class="nav-links">Data / ML</a>
+      <a href="" class="nav-links">Culture</a>
+      <a href="" class="nav-links">Backend</a>
+      <a href="" class="nav-links">AI</a>
+      <a href="" class="nav-links">Overview</a>
+    </div>
+
+    <div id="overlay" onclick="off()"></div>
+
+    <dialog class="navbar-dialog" id="dialog">
+      <a href="" class="nav-links">Overview</a>
+      <a href="" class="nav-links">AI</a>
+      <a href="" class="nav-links">Backend</a>
+      <a href="" class="nav-links">Culture</a>
+      <a href="" class="nav-links">Data / ML</a>
+      <a href="" class="nav-links">Mobile</a>
+      <a href="" class="nav-links">Web</a>
+      <a href="" class="nav-links">Research</a>
+    </dialog>
+
+    <!-- BLOG CATALOG START  -->
+    <div id="catalogPane" class="page visible">
+      <div id="blog-title">
+        <h1>Engineering</h1>
+        <h6>The technology behind Uber Engineering</h6>
+      </div>
+
+      <div class="container" id="cardContainer"></div>
+    </div>
+    <!-- BLOG CATALOG END  -->
+    <!-- BLOG PANE START  -->
+    <div id="blogPane" class="page">
+      <div class="title">
+        <h1 id="blogTitle"></h1>
+      </div>
+      <div class="cover-img">
+        <img src="./images/Cover-photo.webp" alt="" />
+      </div>
+      <div class="content">
+        <p id="blogContent"></p>
+      </div>
+    </div>
+    <!-- BLOG PANE END  -->
+    <footer>
+      <h1>Uber</h1>
+    </footer>
+
+    <script>
+      function showHeader() {
+        document.getElementById("overlay").style.display = "block";
+        var x = document.getElementById("myHeader");
+        var list = x.querySelector(".header-list"); // Adjust the class if needed
+
+        // var navbarHeight = document.querySelector(".header").offsetHeight;
+
+        if (x.className === "header") {
+          x.className += " responsive";
+          if (list) {
+            list.style.display = "none";
+          }
+        } else {
+          x.className = "header";
+          if (list) {
+            list.style.display = "block";
+          }
+        }
+      }
+
+      var z = document.getElementById("dialog");
+      function showNavbar() {
+        document.getElementById("overlay").style.display = "block";
+        var x = document.getElementById("myTopnav");
+        var h1Element = x.querySelector("h1");
+        var buttonElement = x.querySelector(".responsive-button"); // Adjust the class if needed
+
+        // var navbarHeight = document.querySelector(".header").offsetHeight;
+
+        if (x.className === "topnav") {
+          x.className += " responsive";
+          if (h1Element) {
+            h1Element.style.display = "none";
+          }
+          if (buttonElement) {
+            buttonElement.style.display = "none";
+          }
+        } else {
+          x.className = "topnav";
+          if (h1Element) {
+            h1Element.style.display = "block";
+          }
+          if (buttonElement) {
+            buttonElement.style.display = "block";
+          }
+        }
+        // x.style.display = "none";
+        // if (isNavbarInView()) {
+        //   z.style.top = navbarHeight + "px";
+        // } else {
+        //   z.style.top = "0";
+        // }
+        // z.showModal();
+      }
+
+      // function isNavbarInView() {
+      //   var navbar = document.querySelector(".header");
+      //   var rect = navbar.getBoundingClientRect();
+      //   return rect.top >= 0;
+      // }
+
+      document.addEventListener("click", function (event) {
+        var x = document.getElementById("myTopnav");
+        var h1Element = x.querySelector("h1");
+        var buttonElement = x.querySelector(".responsive-button"); // Adjust the class if needed
+
+        // Check if the clicked element is not part of the responsive menu
+        if (!x.contains(event.target)) {
+          // z.close();
+          x.className = "topnav";
+          if (h1Element) {
+            h1Element.style.display = "inline-block";
+          }
+          if (buttonElement) {
+            buttonElement.style.display = "inline-block";
+          }
+        }
+      });
+
+      function on() {
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+      }
+
+      function showPane(pane) {
+        const catalogPane = document.getElementById("catalogPane");
+        const blogPane = document.getElementById("blogPane");
+
+        if (pane === "catalog") {
+          catalogPane.classList.add("visible");
+          blogPane.classList.remove("visible");
+        }
+
+        if (pane === "blog") {
+          catalogPane.classList.remove("visible");
+          blogPane.classList.add("visible");
+        }
+      }
+
+      const gridContainer = document.getElementById("cardContainer");
+
+      const generateCard = (title) => {
+        return `
+    <div class="card">
+        <img src="images/Cover-photo.webp" alt="Avatar" style="width: 100%" />
+        <div class="card-container">
+            <p class="card-tag">Engineering, Web</p>
+            <h4 class="card-title">
+                <b id="dynamic-title"> ${title} </b>
+            </h4>
+        </div>
+      </div>
+    `;
+      };
+      function refreshCards() {
+        Object.keys(localStorage).forEach((key) => {
+          console.log(localStorage.getItem(key));
+          gridContainer.insertAdjacentHTML("afterbegin", generateCard(key));
+        });
+      }
+
+      refreshCards();
+
+      const showCard = (title) => {
+        const blogTitle = document.getElementById("blogTitle");
+        const blogContent = document.getElementById("blogContent");
+        blogTitle.textContent = title;
+        blogContent.textContent = localStorage.getItem(title);
+        showPane("blog");
+        // console.log(title);
+      };
+
+      gridContainer.addEventListener("click", (event) => {
+        const clickedCard = event.target.closest(".card");
+        if (clickedCard) {
+          const title = clickedCard
+            .querySelector(".card-title b")
+            .textContent.trim();
+          console.log(title);
+          showCard(title);
+        }
+      });
+
+      function goToCatalog() {
+        showPane("catalog");
+      }
+
+      const mainHeader = document.getElementById("main-header");
+
+      mainHeader.addEventListener("click", goToCatalog);
+    </script>
+  </body>
+</html>
