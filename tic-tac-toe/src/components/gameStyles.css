@@ -1,0 +1,9 @@
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-info button {
+  width: 150px;
+  height: 50px;
+}
