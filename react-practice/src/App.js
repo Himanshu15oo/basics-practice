@@ -6,6 +6,7 @@ import FocusInput from "./components/FocusInput";
 import HookTimer from "./components/HookTimer";
 import DocTitleOne from "./components/DocTitleOne";
 import DocTitleTwo from "./components/DocTitleTwo";
+import CustomCounter from "./components/CustomCounter";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       {/* <Counter /> */}
       {/* <FocusInput /> */}
       {/* <HookTimer /> */}
-      <DocTitleOne />
-      <DocTitleTwo />
+      {/* <DocTitleOne /> */}
+      {/* <DocTitleTwo /> */}
+      <CustomCounter />
     </div>
   );
 }
