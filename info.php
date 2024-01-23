@@ -1,2 +1,2 @@
 <?php
-echo "This is echo";
+phpinfo();
