@@ -55,6 +55,7 @@ function get_selected_page()
     global $sel_page;
     $sel_subject['id'] = null;
     $sel_page['id'] = null;
+    $sel_page['subject_id'] = null;
     if (isset($_GET['subj'])) {
         $sel_subject = get_subject_by_id($_GET['subj']);
     } elseif (isset($_GET['page'])) {
@@ -109,7 +110,7 @@ function public_navigation($sel_subject, $sel_page)
             $class = ($subject['id'] == $sel_subject['id']) ? "selected" : "";
             $output .= "<li class='{$class}'> <a href='index.php?subj=" . urlencode($subject['id']) . "'>{$subject["menu_name"]}</a> </li>";
 
-            if ($subject['id'] == $sel_subject['id']) {
+            if ($subject['id'] == $sel_subject['id'] || $subject['id'] == $sel_page['subject_id']) {
                 // Querying Pages in a subject
                 $pages = get_pages_for_subject($subject['id']);
                 $output .= '<ul class="pages">';
