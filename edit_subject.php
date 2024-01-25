@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
                         <?php
                         $subjects = get_all_subjects();
                         $subject_count = $subjects->num_rows;
-                        for ($i = 1; $i <= $subject_count + 1; $i++) {
+                        for ($i = 1; $i <= $subject_count; $i++) {
                             echo "<option value='{$i}' ";
                             // if position matches i, show as selected
                             echo ($i == $sel_subject['position']) ? "selected" : "";
@@ -103,8 +103,7 @@ if (isset($_POST['submit'])) {
             $output = '<ul class="pages">';
             if ($pages->num_rows > 0) {
                 while ($page = $pages->fetch_assoc()) {
-                    $class = ($page['id'] == $sel_page['id']) ? "selected" : "";
-                    $output .= "<li class='{$class}'> <a href='content.php?page=" . urlencode($page['id']) . "'>{$page["menu_name"]}</a> </li>";
+                    $output .= "<li> <a href='content.php?page=" . urlencode($page['id']) . "'>{$page["menu_name"]}</a> </li>";
                 }
             }
             $output .= '</ul>';
