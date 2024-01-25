@@ -93,3 +93,37 @@ function navigation($sel_subject, $sel_page)
 
     return $output;
 }
+
+function public_navigation($sel_subject, $sel_page)
+{
+
+    global $sel_subject;
+    global $sel_page;
+
+    $output = "<ul class='subjects'>";
+    // Database Query
+    // Querying subjects
+    $subjects = get_all_subjects();
+    if ($subjects->num_rows > 0) {
+        while ($subject = $subjects->fetch_assoc()) {
+            $class = ($subject['id'] == $sel_subject['id']) ? "selected" : "";
+            $output .= "<li class='{$class}'> <a href='index.php?subj=" . urlencode($subject['id']) . "'>{$subject["menu_name"]}</a> </li>";
+
+            if ($subject['id'] == $sel_subject['id']) {
+                // Querying Pages in a subject
+                $pages = get_pages_for_subject($subject['id']);
+                $output .= '<ul class="pages">';
+                if ($pages->num_rows > 0) {
+                    while ($page = $pages->fetch_assoc()) {
+                        $class = ($page['id'] == $sel_page['id']) ? "selected" : "";
+                        $output .= "<li class='{$class}'> <a href='index.php?page=" . urlencode($page['id']) . "'>{$page["menu_name"]}</a> </li>";
+                    }
+                }
+                $output .= '</ul>';
+            }
+        }
+    }
+    $output .= "</ul>";
+
+    return $output;
+}

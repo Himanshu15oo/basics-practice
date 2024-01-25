@@ -15,12 +15,13 @@
             <?php
             if (isset($sel_subject['menu_name'])) {
                 echo "<h2>" . $sel_subject['menu_name'] . "</h2>";
-            } elseif (isset($sel_page['menu_name'])) {
+            }
+            if (isset($sel_page['menu_name'])) {
                 echo "<h2>" . $sel_page['menu_name'] . "</h2>";
                 echo "<div class='page-content'>
                             {$sel_page['content']}
                         </div>";
-                echo "<br /><br />";
+                echo "<br />";
                 echo "<a href='edit_page.php?page=" . urlencode($sel_page['id']) . "'>Edit Page</a>";
             } else {
                 // Page displayed before a selection
